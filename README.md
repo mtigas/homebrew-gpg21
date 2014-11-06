@@ -27,15 +27,21 @@ formulae. Don't fret.)
 You can then install the forumla by doing:
 
 ```
-brew install -vd mtigas/gpg21/gpg-agent
-brew install -vd mtigas/gpg21/gnupg21 --8192
+brew install mtigas/gpg21/gnupg21
 ```
 
+...or, if you're daring and want to compile with support for generation of huge
+keys and TLS support for keyservers that use it (like the HKPS pool
+at https://sks-keyservers.net/overview-of-pools.php )
+
+```
+brew install mtigas/gpg21/gnupg21 --8192 --with-gnutls
+```
 
 ### Method 2: Raw URL
 
 You can install the formula without tapping this repo by doing:
 
 ```
-brew install -vd https://github.com/mtigas/homebrew-gpg21/raw/master/Formula/gnupg21.rb
+brew install https://github.com/mtigas/homebrew-gpg21/raw/master/Formula/gnupg21.rb
 ```
