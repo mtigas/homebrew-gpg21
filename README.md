@@ -21,18 +21,18 @@ Tap the repository into your brew installation
 brew tap mtigas/gpg21
 ```
 
-(You'll see some warnings about it conflictingw ith the `gnupg2` and `gpg-agent`
-formulae. Don't fret.)
+(You'll see some warnings about it conflicting with the `gnupg2` formula. Don't fret.)
 
-You can then install the forumla by doing:
+You can then install the forumla by doing the following. (You might have to `brew uninstall gnupg2`
+and `brew uninstall gpg-agent` first.)
 
 ```
 brew install mtigas/gpg21/gnupg21
 ```
 
-...or, if you're daring and want to compile with support for generation of huge
+If you're daring and want to compile with support for generation of huge
 keys and TLS support for keyservers that use it (like the HKPS pool
-at https://sks-keyservers.net/overview-of-pools.php )
+at https://sks-keyservers.net/overview-of-pools.php ), you can even do:
 
 ```
 brew install mtigas/gpg21/gnupg21 --8192 --with-gnutls
