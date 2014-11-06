@@ -29,6 +29,7 @@ class Gnupg2 < Formula
   depends_on "libusb-compat" => :recommended
   depends_on "readline" => :optional
   depends_on "pkg-config" => :build
+  depends_on "gnutls" => :optional
 
   conflicts_with "gpg-agent", :because => "This GnuPG 2.1 includes gpg-agent"
   conflicts_with "dirmngr", :because => "This GnuPG 2.1 includes dirmngr"
