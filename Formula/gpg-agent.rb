@@ -16,8 +16,8 @@ class GpgAgent < Formula
   depends_on "pinentry"
 
   patch do
-    url "https://gist.githubusercontent.com/e1ven/167af3ac8a196773fc46/raw/62f4deb4936a6a32634ac3ee12c9a06cb4c8eac7/makefile.patch"
-    sha1 "921389587161b0378ecf14dd39aaa2fe4c9312fc"
+    url "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0001-fix-mac-os-x-build.patch"
+    sha1 "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0001-fix-mac-os-x-build.patch"
   end
 
   # Adjust package name to fit our scheme of packaging both
