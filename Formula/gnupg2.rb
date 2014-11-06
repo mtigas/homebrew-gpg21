@@ -10,7 +10,7 @@ class Gnupg2 < Formula
 
   patch do
     url "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0001-fix-mac-os-x-build.patch"
-    sha1 "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0001-fix-mac-os-x-build.patch"
+    sha1 "4cd7ec2081646032de291b1f012a647841296f1d"
   end
 
   option "8192", "Build with support for private keys of up to 8192 bits"
