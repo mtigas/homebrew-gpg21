@@ -12,7 +12,7 @@ class GpgAgent < Formula
   depends_on "libgcrypt"
   depends_on "libksba"
   depends_on "libassuan"
-  depends_on "pth"
+  depends_on "mtigas/gpg21/npth"
   depends_on "pinentry"
 
   # Adjust package name to fit our scheme of packaging both
