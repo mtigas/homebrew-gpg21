@@ -21,14 +21,14 @@ Tap the repository into your brew installation
 brew tap mtigas/gpg21
 ```
 
-And you can then install the forumla by doing:
+(You'll see some warnings about it conflictingw ith the `gnupg2` and `gpg-agent`
+formulae. Don't fret.)
+
+You can then install the forumla by doing:
 
 ```
+brew install -vd mtigas/gpg21/gpg-agent
 brew install -vd mtigas/gpg21/gnupg21
-
-#or
-
-brew install -vd gnupg21
 ```
 
 
