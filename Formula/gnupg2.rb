@@ -24,12 +24,14 @@ class Gnupg2 < Formula
   depends_on "libksba"
   depends_on "libassuan"
   depends_on "pinentry"
-  depends_on "pth"
-  depends_on "mtigas/gpg21/gpg-agent"
+  depends_on "mtigas/gpg21/npth"
   depends_on "curl" if MacOS.version <= :mavericks
-  depends_on "dirmngr" => :recommended
   depends_on "libusb-compat" => :recommended
   depends_on "readline" => :optional
+  depends_on "pkg-config" => :build
+
+  conflicts_with "gpg-agent", :because => "This GnuPG 2.1 includes gpg-agent"
+  conflicts_with "dirmngr", :because => "This GnuPG 2.1 includes dirmngr"
 
   def install
     # Adjust package name to fit our scheme of packaging both gnupg 1.x and
@@ -37,10 +39,6 @@ class Gnupg2 < Formula
     inreplace "configure" do |s|
       s.gsub! "PACKAGE_NAME='gnupg'", "PACKAGE_NAME='gnupg2'"
       s.gsub! "PACKAGE_TARNAME='gnupg'", "PACKAGE_TARNAME='gnupg2'"
-    end
-    inreplace "tests/openpgp/Makefile.in" do |s|
-      s.gsub! "required_pgms = ../../g10/gpg2 ../../agent/gpg-agent",
-              "required_pgms = ../../g10/gpg2"
     end
     inreplace "tools/gpgkey2ssh.c", "gpg --list-keys", "gpg2 --list-keys"
 
@@ -52,16 +50,11 @@ class Gnupg2 < Formula
 
     ENV["gl_cv_absolute_stdint_h"] = "#{MacOS.sdk_path}/usr/include/stdint.h"
 
-    agent = Formula["gpg-agent"].opt_prefix
-
     args = %W[
       --disable-dependency-tracking
       --prefix=#{prefix}
       --sbindir=#{bin}
       --enable-symcryptrun
-      --disable-agent
-      --with-agent-pgm=#{agent}/bin/gpg-agent
-      --with-protect-tool-pgm=#{agent}/libexec/gpg-protect-tool
     ]
 
     if build.with? "readline"
