@@ -1,7 +1,9 @@
 # homebrew-gpg21
 
 This repository contains a [Homebrew][brew] formula for [GnuPG 2.1](https://gnupg.org/faq/whats-new-in-2.1.html),
-just for testing until that version of GPG lands in Homebrew proper
+just for testing until that version of GPG lands in Homebrew proper.
+
+**BACK UP YOUR PRIVATE KEYS FIRST. THIS HAS NOT BEEN WELL-TESTED YET.** GnuPG 2.1 has a new system of handling keyrings, entirely in `gpg-agent`. You may have conflicts when running this alongside a GnuPG 2.X instance (such as that included in GPGTools) and you may lose your existing private keys.
 
 **You will need to [install Homebrew][brew_install] to use this**, see
 [here][brew_install].
