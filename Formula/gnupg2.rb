@@ -8,6 +8,11 @@ class Gnupg2 < Formula
   sha1 "2fcd0ca6889ef6cb59e3275e8411f8b7778c2f33"
   revision 1
 
+  patch do
+    url "https://gist.githubusercontent.com/e1ven/167af3ac8a196773fc46/raw/62f4deb4936a6a32634ac3ee12c9a06cb4c8eac7/makefile.patch"
+    sha1 "921389587161b0378ecf14dd39aaa2fe4c9312fc"
+  end
+
   option "8192", "Build with support for private keys of up to 8192 bits"
 
   depends_on "libgpg-error"

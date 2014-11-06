@@ -15,6 +15,11 @@ class GpgAgent < Formula
   depends_on "mtigas/gpg21/npth"
   depends_on "pinentry"
 
+  patch do
+    url "https://gist.githubusercontent.com/e1ven/167af3ac8a196773fc46/raw/62f4deb4936a6a32634ac3ee12c9a06cb4c8eac7/makefile.patch"
+    sha1 "921389587161b0378ecf14dd39aaa2fe4c9312fc"
+  end
+
   # Adjust package name to fit our scheme of packaging both
   # gnupg 1.x and 2.x, and gpg-agent separately
   patch :DATA
@@ -22,6 +27,7 @@ class GpgAgent < Formula
   def install
     # don't use Clang's internal stdint.h
     ENV["gl_cv_absolute_stdint_h"] = "#{MacOS.sdk_path}/usr/include/stdint.h"
+    ENV["CFLAGS"] 
 
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
