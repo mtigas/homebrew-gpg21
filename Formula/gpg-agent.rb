@@ -25,7 +25,14 @@ class GpgAgent < Formula
 
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--enable-agent-only",
+                          "--disable-gpg",
+                          "--disable-gpgsm",
+                          "--disable-scdaemon",
+                          "--disable-g13",
+                          "--disable-dirmngr",
+                          "--disable-tools",
+                          "--disable-doc",
+                          "--disable-gpgtar",
                           "--with-pinentry-pgm=#{Formula["pinentry"].opt_bin}/pinentry",
                           "--with-scdaemon-pgm=#{Formula["gnupg2"].opt_libexec}/scdaemon"
     system "make install"
