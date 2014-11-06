@@ -19,6 +19,10 @@ class GpgAgent < Formula
     url "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0001-fix-mac-os-x-build.patch"
     sha1 "4cd7ec2081646032de291b1f012a647841296f1d"
   end
+  patch do
+    url "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0002-fix-mac-os-x-build.patch"
+    sha1 "6881a4fb198b0399f75e82c73f3c8a8b0e6711a0"
+  end
 
   # Adjust package name to fit our scheme of packaging both
   # gnupg 1.x and 2.x, and gpg-agent separately
@@ -27,7 +31,6 @@ class GpgAgent < Formula
   def install
     # don't use Clang's internal stdint.h
     ENV["gl_cv_absolute_stdint_h"] = "#{MacOS.sdk_path}/usr/include/stdint.h"
-    ENV["CFLAGS"] 
 
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",

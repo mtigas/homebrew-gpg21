@@ -1,0 +1,62 @@
+From 96e6020e2251ae8ded211afd48938c99255e4249 Mon Sep 17 00:00:00 2001
+From: Mike Tigas <mike@tig.as>
+Date: Thu, 6 Nov 2014 14:50:14 -0500
+Subject: [PATCH] .
+
+---
+ common/Makefile.in | 4 ++--
+ g10/Makefile.in    | 2 +-
+ tools/Makefile.in  | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/common/Makefile.in b/common/Makefile.in
+index 4ecc52e..a29a53a 100644
+--- a/common/Makefile.in
++++ b/common/Makefile.in
+@@ -718,7 +718,7 @@ module_tests = t-convert t-percent t-gettime t-sysutils t-sexputil \
+ t_common_cflags = $(KSBA_CFLAGS) $(LIBGCRYPT_CFLAGS) \
+                   $(LIBASSUAN_CFLAGS) $(GPG_ERROR_CFLAGS)
+ 
+-t_common_ldadd = libcommon.a ../gl/libgnu.a \
++t_common_ldadd = libcommon.a libcommon_a-init.o ../gl/libgnu.a \
+                  $(LIBGCRYPT_LIBS) $(LIBASSUAN_LIBS) $(GPG_ERROR_LIBS) \
+ 	         $(LIBINTL) $(LIBICONV)
+ 
+@@ -749,7 +749,7 @@ t_zb32_LDADD = $(t_common_ldadd)
+ 
+ # http tests
+ t_http_SOURCES = t-http.c
+-t_http_CFLAGS = $(t_common_cflags) $(NTBTLS_CFLAGS) $(LIBGNUTLS_CFLAGS)
++t_http_CFLAGS = $(AM_CFLAGS) $(t_common_cflags) $(NTBTLS_CFLAGS) $(LIBGNUTLS_CFLAGS)
+ t_http_LDADD = libcommontls.a $(t_common_ldadd) \
+ 	         $(NTBTLS_LIBS) $(LIBGNUTLS_LIBS) $(DNSLIBS)
+ 
+diff --git a/g10/Makefile.in b/g10/Makefile.in
+index 5c62c45..5871c31 100644
+--- a/g10/Makefile.in
++++ b/g10/Makefile.in
+@@ -470,7 +470,7 @@ libcommon = ../common/libcommon.a
+ libcommonpth = ../common/libcommonpth.a
+ libcommontls = ../common/libcommontls.a
+ libcommontlsnpth = ../common/libcommontlsnpth.a
+-AM_CFLAGS = $(LIBGCRYPT_CFLAGS) $(LIBASSUAN_CFLAGS) $(GPG_ERROR_CFLAGS)
++AM_CFLAGS = $(KSBA_CFLAGS) $(LIBGCRYPT_CFLAGS) $(LIBASSUAN_CFLAGS) $(GPG_ERROR_CFLAGS)
+ needed_libs = ../kbx/libkeybox.a $(libcommon) ../gl/libgnu.a
+ @ENABLE_BZIP2_SUPPORT_FALSE@bzip2_source = 
+ @ENABLE_BZIP2_SUPPORT_TRUE@bzip2_source = compress-bz2.c
+diff --git a/tools/Makefile.in b/tools/Makefile.in
+index b9f60b0..4ea44b3 100644
+--- a/tools/Makefile.in
++++ b/tools/Makefile.in
+@@ -518,7 +518,7 @@ EXTRA_DIST = \
+ 	lspgpot mail-signed-keys convert-from-106 sockprox.c \
+ 	ccidmon.c ChangeLog-2011 gpg-connect-agent-w32info.rc
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/gl -I$(top_srcdir)/intl \
++AM_CPPFLAGS = $(AM_CFLAGS) -I$(top_srcdir)/gl -I$(top_srcdir)/intl \
+ 	-I$(top_srcdir)/common -DLOCALEDIR=\"$(localedir)\" \
+ 	$(am__append_1) $(am__append_2) $(am__append_3) \
+ 	$(am__append_4) $(am__append_5) $(am__append_6) \
+-- 
+2.1.0
+
