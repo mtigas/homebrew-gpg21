@@ -41,8 +41,6 @@ class Gnupg2 < Formula
     inreplace "tests/openpgp/Makefile.in" do |s|
       s.gsub! "required_pgms = ../../g10/gpg2 ../../agent/gpg-agent",
               "required_pgms = ../../g10/gpg2"
-      s.gsub! "../../agent/gpg-agent --quiet --daemon sh",
-              "gpg-agent --quiet --daemon sh"
     end
     inreplace "tools/gpgkey2ssh.c", "gpg --list-keys", "gpg2 --list-keys"
 

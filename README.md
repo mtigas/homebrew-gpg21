@@ -28,7 +28,7 @@ You can then install the forumla by doing:
 
 ```
 brew install -vd mtigas/gpg21/gpg-agent
-brew install -vd mtigas/gpg21/gnupg21
+brew install -vd mtigas/gpg21/gnupg21 --8192
 ```
 
 
