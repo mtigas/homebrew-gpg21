@@ -2,20 +2,11 @@ require "formula"
 
 class Gnupg2 < Formula
   homepage "https://www.gnupg.org/"
-  url "ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.0.tar.bz2"
-  mirror "ftp://ftp.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.0.tar.bz2"
-  mirror "ftp://mirror.tje.me.uk/pub/mirrors/ftp.gnupg.org/gnupg/gnupg-2.1.0.tar.bz2"
-  sha1 "2fcd0ca6889ef6cb59e3275e8411f8b7778c2f33"
-  revision 1
-
-  patch do
-    url "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0001-fix-mac-os-x-build.patch"
-    sha1 "4cd7ec2081646032de291b1f012a647841296f1d"
-  end
-  patch do
-    url "https://github.com/mtigas/homebrew-gpg21/raw/master/Patches/0002-fix-mac-os-x-build.patch"
-    sha1 "6881a4fb198b0399f75e82c73f3c8a8b0e6711a0"
-  end
+  url "ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.1.tar.bz2"
+  mirror "ftp://ftp.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.1.tar.bz2"
+  mirror "ftp://mirror.tje.me.uk/pub/mirrors/ftp.gnupg.org/gnupg/gnupg-2.1.1.tar.bz2"
+  sha1 "3d11fd150cf86f842d077437edb119a775c7325d"
+  revision 2
 
   option "8192", "Build with support for private keys of up to 8192 bits"
 
